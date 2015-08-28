@@ -1,0 +1,44 @@
+body{
+    margin-top:70px;
+    color:white;
+    background-color: #555;
+}
+
+#language{
+    padding:7px;
+    background-color:#555;
+    border-color:#555;
+    border-radius:.25rem;
+}
+
+#scratch{
+
+}
+
+.CodeMirror{
+    background-color:#555;
+    color:white;
+    border: 3px solid gray;
+    border-radius: 4px;
+    padding:1em;
+}
+
+#execute{
+    margin-top: 1rem;
+}
+
+#repl {
+    border: 3px solid gray;
+    border-radius: 4px;
+    padding:1em;
+}
+
+#run {
+    padding-left:1em;
+}
+.input{
+    color:white;
+}
+.output{
+    color:#0275d8;
+}
