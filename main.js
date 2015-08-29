@@ -1,41 +1,60 @@
 var scratchPads = [];
 
 $(function(){
-  scratchPads.push(CodeMirror($("#scratch")[0]));
+  scratchPads.push(
+    CodeMirror($("#scratch")[0], {
+      mode: $("#language").val().toLowerCase(),
+      lineNumbers: true
+    })
+  );
   
-  
+  var jqconsole = $('#console').jqconsole('Hi\n', '>');
+
+  var startPrompt = function () {
+    jqconsole.Prompt(true, function (input) {
+      var output = execute(input);
+      if(typeof output != "undefined"){
+        jqconsole.Write(output + '\n', 'jqconsole-output');
+      }
+      startPrompt();
+    });
+  };
+
   console.log = function(thing){
-    $("#run").append("<span class='input'>" + thing.toString().split(/\n/).join("<br />")+"</span><br />");
+    jqconsole.Write(thing.toString() + '\n', 'jqconsole-output');
   };
   
   var execute = function(code){
-    console.log(code);
     var output = "";
-    if($("#language").val()=="Javascript"){
-      output = eval(code);
-    } else if($("#language").val()=="Coffeescript"){
-      output = eval(CoffeeScript.compile(code));
+    switch($("#language").val()){
+      case "CoffeeScript":
+        output = eval(CoffeeScript.compile(code));
+        break;
+      case "Javascript":
+        output = eval(code);
+        break;
+      default:
+        output = "Error: Unrecognized Language!";
     }
-    $("#run").append("<span class='output'>" + output + "</span><br />");
+    return output;
   };
-  
-  $("#current").keydown(function(e){
-    if(e.keyCode == 13){
-      execute($(this).text());
-      $(this).text("");
-    }
-  });
   
   $("#execute button").click(function(e){
     var code = "";
-    if(this.innerTHML == "Selection"){
+    if(this.innerHTML == "Selection"){
       code = scratchPads[0].getSelection();
     } else if (this.innerHTML == "Line") {
       code = scratchPads[0].getLine(scratchPads[0].getCursor().line);
     } else {
       code = scratchPads[0].getValue();
     }
-    execute(code);
+    jqconsole.Write(code + '\n', 'jqconsole-output');
+    var output = execute(code);
+    if(typeof output != "undefined"){
+      jqconsole.Write(output + '\n', 'jqconsole-output');
+    }
   })
+  
+  startPrompt();
   
 });

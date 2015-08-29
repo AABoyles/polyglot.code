@@ -1,26 +1,27 @@
+html{
+    height: 100%;
+}
 body{
+    height: calc(100% - 70px);
     margin-top:70px;
     color:white;
     background-color: #555;
 }
-
 #language{
     padding:7px;
     background-color:#555;
     border-color:#555;
     border-radius:.25rem;
 }
-
+.row, .container-fluid{
+    height: 100%;
+}
 #scratch{
-
+    height:calc(100% - 70px);
 }
 
 .CodeMirror{
-    background-color:#555;
-    color:white;
-    border: 3px solid gray;
-    border-radius: 4px;
-    padding:1em;
+    height:100%;
 }
 
 #execute{
@@ -36,9 +37,51 @@ body{
 #run {
     padding-left:1em;
 }
-.input{
-    color:white;
+#input{
+    height:100%;
 }
-.output{
-    color:#0275d8;
+
+#output{
+    height:calc(100% - 15px);
+    background-color:white;
+}
+
+/* The console container element */
+#console {
+  height: 100%;
+}
+/* The inner console element. */
+.jqconsole {
+    padding: 10px;
+}
+/* The cursor. */
+.jqconsole-cursor {
+    background-color: gray;
+}
+/* The cursor color when the console looses focus. */
+.jqconsole-blurred .jqconsole-cursor {
+    background-color: #666;
+}
+/* The current prompt text color */
+.jqconsole-prompt {
+    color: #0d0;
+}
+/* The command history */
+.jqconsole-old-prompt {
+    color: #0b0;
+    font-weight: normal;
+}
+/* The text color when in input mode. */
+.jqconsole-input {
+    color: #dd0;
+}
+/* Previously entered input. */
+.jqconsole-old-input {
+    color: #bb0;
+    font-weight: normal;
+}
+/* The text color of the output. */
+.jqconsole-output {
+    color: white;
+    padding-left:.6em;
 }
