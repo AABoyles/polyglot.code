@@ -8,11 +8,13 @@ $(function(){
     $("#run").append("<span class='input'>" + thing.toString().split(/\n/).join("<br />")+"</span><br />");
   };
   
-  execute = function(code){
+  var execute = function(code){
     console.log(code);
     var output = "";
     if($("#language").val()=="Javascript"){
       output = eval(code);
+    } else if($("#language").val()=="Coffeescript"){
+      output = eval(CoffeeScript.compile(code));
     }
     $("#run").append("<span class='output'>" + output + "</span><br />");
   };

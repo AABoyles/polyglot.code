@@ -8,18 +8,17 @@ by [Tony Boyles](AABoyles@gmail.com)
 
 ### Active
 
-None Yet!
+ * Javascript (natively)
+ * [CoffeeScript](http://coffeescript.org/)
 
 ### To be included
 
- * Javascript (natively)
  * [Python](http://pypyjs.org/)
  * [Go](https://github.com/gopherjs/gopherjs)
  * [Perl](http://www.perlito.org/)
 
 ### To possibly include
 
- * [CoffeeScript](http://coffeescript.org/)
  * [Haskell](http://haste-lang.org/)
  * [Scala](http://www.scala-js.org/)
  * [COBOL](https://github.com/IonicaBizau/node-cobol)
